@@ -205,7 +205,7 @@ public class KeyboardScript : MonoBehaviour
 					if (newKey != null)
 					{
 						keys[rowNumber][j] = newKey;
-						keys[rowNumber][j].Setup(keycodes[rowNumber][j], new KeyPos(rowNumber, j));
+						keys[rowNumber][j].Setup(keycodes[rowNumber][j], new KeyPos(j, rowNumber));
 					}
 				}
 				rowNumber++;
@@ -233,7 +233,7 @@ public class KeyboardScript : MonoBehaviour
 	public KeyScript GetKeyAtPos(KeyPos pos)
 	{
 		if (keys != null)
-			return keys[pos.x][pos.y];
+			return keys[pos.y][pos.x];
 		else
 			return null;
 	}
