@@ -116,6 +116,8 @@ public struct KeyPos
 
 public class KeyboardScript : MonoBehaviour
 {
+	public Player player;
+	
 	private KeyScript[][] keys;
 	private KeyCode[][] keycodes =
 	{
@@ -181,12 +183,11 @@ public class KeyboardScript : MonoBehaviour
 			KeyCode.RightShift
 		}
 	};
-	private KeyPos currentPos = new KeyPos(0, 0);
 
 	public void Start()
 	{
 		FindKeys();
-		//SetupKeys();
+		player.Setup(this);
 	}
 
 	private void FindKeys()
@@ -221,18 +222,19 @@ public class KeyboardScript : MonoBehaviour
 				if (j >= keycodes[i].Length)
 					continue;
 				
-				KeyCode key = keys[i][j].Key;
-				if (Input.GetKeyDown(key))
+				if (Input.GetKeyDown(keys[i][j].Key))
 				{
-					KeyPos newPos = keys[i][j].Pos;
-					if (currentPos.IsAdjacent(newPos))
-					{
-						keys[currentPos.x][currentPos.y].IsHighlighted = false;
-						keys[newPos.x][newPos.y].IsHighlighted = true;
-						currentPos = newPos;
-					}
+					player.PressKey(keys[i][j]);
 				}
 			}
 		}
+	}
+
+	public KeyScript GetKeyAtPos(KeyPos pos)
+	{
+		if (keys != null)
+			return keys[pos.x][pos.y];
+		else
+			return null;
 	}
 }
