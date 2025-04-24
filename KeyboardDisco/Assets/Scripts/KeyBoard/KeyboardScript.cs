@@ -212,29 +212,6 @@ public class KeyboardScript : MonoBehaviour
 		}
 	}
 
-	/*private void AddKey(KeyScript newKey)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			for (int j = 0; j < 14; j++)
-			{
-				if (keycode[i][j] == newKey.)
-				keys[i][j] = newKey;
-			}
-		}
-	}
-
-	private void SetupKeys()
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			for (int j = 0; j < 14; j++)
-			{
-				keys[i][j].Setup(keycodes[i][j], new KeyPos(i, j));
-			}
-		}
-	}*/
-
 	public void Update()
 	{
 		for (int i = 0; i < 4; i++)
@@ -258,19 +235,4 @@ public class KeyboardScript : MonoBehaviour
 			}
 		}
 	}
-
-	/*private KeyPos GetPosFromKeyCode(KeyCode key)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			for (int j = 0; j < 14; j++)
-			{
-				if (keys[i][j].Key == key)
-					return keys[i][j].Pos;
-			}
-		}
-
-		Debug.Log("Invalid keycode!");
-		return new KeyPos(0, 0);
-	}*/
 }
