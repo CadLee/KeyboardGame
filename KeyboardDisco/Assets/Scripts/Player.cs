@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 	public void Setup(KeyboardScript keyboard)
 	{
 		currentKey = keyboard.GetKeyAtPos(startPos);
+		transform.position = currentKey.transform.position;
 	}
 
 	public void PressKey(KeyScript keyPressed)
