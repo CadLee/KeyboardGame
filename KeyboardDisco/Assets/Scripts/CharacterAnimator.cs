@@ -10,7 +10,8 @@ public class CharacterAnimator : MonoBehaviour
 	
 	public SpriteList[] AnimationSprites;
 	public int AnimationPlaying = 0;
-	public float AnimationFrameLength = 1.0f;
+	public bool Animating = false;
+	public float AnimationFrameLength;
 
 	private SpriteRenderer spriteRenderer;
 
@@ -21,8 +22,11 @@ public class CharacterAnimator : MonoBehaviour
 
 	public void Update()
 	{
-		Sprite[] spriteList = AnimationSprites[AnimationPlaying].sprites;
-		int frame = (int)((Time.time / AnimationFrameLength) % (float)spriteList.Length);
-		spriteRenderer.sprite = spriteList[frame];
+		if (Animating)
+		{
+			Sprite[] spriteList = AnimationSprites[AnimationPlaying].sprites;
+			int frame = (int)((Time.time / AnimationFrameLength) % (float)spriteList.Length);
+			spriteRenderer.sprite = spriteList[frame];
+		}
 	}
 }

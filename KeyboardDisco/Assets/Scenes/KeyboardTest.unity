@@ -13580,7 +13580,8 @@ MonoBehaviour:
     - {fileID: -2021209627293416613, guid: caad14d96785e4acc94a403d651985ea, type: 3}
     - {fileID: -6644888163440152073, guid: caad14d96785e4acc94a403d651985ea, type: 3}
   AnimationPlaying: 0
-  AnimationFrameLength: 0.2
+  Animating: 0
+  AnimationFrameLength: 0.1
 --- !u!1 &1417636290
 GameObject:
   m_ObjectHideFlags: 0
@@ -18963,6 +18964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1400249961}
+  keyTransitionTime: 0.2
 --- !u!4 &2126516469
 Transform:
   m_ObjectHideFlags: 0
