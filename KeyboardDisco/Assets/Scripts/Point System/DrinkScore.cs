@@ -7,8 +7,14 @@ public class DrinkScore : MonoBehaviour
     public int scoreToBeat;
 
     private int currentScore=0;
+
+    public GameObject ScoreBarObject;
+
+    private AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         if (scoreToBeat < 1)
         {
             scoreToBeat = 1;
@@ -20,8 +26,7 @@ public class DrinkScore : MonoBehaviour
     {
         if(currentScore >= scoreToBeat)
         {
-            SceneManager.LoadScene(3);
-            Debug.Log("Victory");
+            Invoke("WinGame", 1.3f);
         }
     }
 
@@ -29,5 +34,30 @@ public class DrinkScore : MonoBehaviour
     {
         currentScore++;
         Debug.Log("Drinks Drank: "+currentScore);
+        try
+        {
+            ScoreBarObject.GetComponent<DrinkScoreBar>().BarCheck();
+        }
+        catch
+        {
+            Debug.Log(gameObject+" could not find Sprite Object");
+        }
+        audioSource.Play();
+    }
+
+    public int ScoreCap()
+    {
+        return scoreToBeat;
+    }
+
+    public int ScoreCurrent()
+    {
+        return currentScore;
+    }
+
+    private void WinGame()
+    {
+        SceneManager.LoadScene(3);
+        Debug.Log("Victory");
     }
 }

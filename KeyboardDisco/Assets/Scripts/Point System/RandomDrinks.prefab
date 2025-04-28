@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6083523189894487943}
   - component: {fileID: 4301711010816029938}
   - component: {fileID: 6892312575921305970}
+  - component: {fileID: 516710510981204688}
   m_Layer: 0
   m_Name: RandomDrinks
   m_TagString: Untagged
@@ -108,3 +109,18 @@ MonoBehaviour:
   - {fileID: -7144225218517239981, guid: 9ae3aec46a3e3284b885adb770c4b321, type: 3}
   - {fileID: 6921784394953691397, guid: 07b6c161aa341644dbfe4beb8ccd7199, type: 3}
   - {fileID: 3084518078895070990, guid: 1745b1037173cb347b839ba57aa7d6d5, type: 3}
+--- !u!114 &516710510981204688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3890618600950331643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1

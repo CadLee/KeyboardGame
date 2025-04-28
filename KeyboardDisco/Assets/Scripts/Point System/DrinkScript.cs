@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class DrinkScript : MonoBehaviour
 {
+    private Animator anim;
+
     private GameObject TargetKeyboard;
     private KeyboardScript keyboard;
 
@@ -14,21 +17,55 @@ public class DrinkScript : MonoBehaviour
 
     private KeyScript randomkey;
 
+    private int randomNumber;
+
     void Start()
     {
-        newSprite = drinkSprites[Random.Range(0, drinkSprites.Length)];
+        randomNumber = Random.Range(0, drinkSprites.Length);
+        newSprite = drinkSprites[randomNumber];
         gameObject.GetComponent<SpriteRenderer>().sprite = newSprite;
 
-        TargetKeyboard = GameObject.Find("Keyboard");
-        keyboard = TargetKeyboard.GetComponent<KeyboardScript>();
+        try
+        {
+            TargetKeyboard = GameObject.Find("Keyboard");
+            keyboard = TargetKeyboard.GetComponent<KeyboardScript>();
 
-        KeyPos randomKeypos = new KeyPos(Random.Range(1, 11), Random.Range(0, 4));
-        randomkey = keyboard.GetKeyAtPos(randomKeypos);
-        transform.position = randomkey.transform.position;
+            KeyPos randomKeypos = new KeyPos(Random.Range(1, 11), Random.Range(0, 4));
+            randomkey = keyboard.GetKeyAtPos(randomKeypos);
+            transform.position = randomkey.transform.position;
+        }
+        catch
+        {
+            Debug.Log(gameObject+" could not find Keyboard Object");
+        }
 
-        Player = GameObject.Find("Player");
+        try
+        {
+            Player = GameObject.Find("Player");
+        }
+        catch
+        {
+            Debug.Log(gameObject + " could not find Player");
+        }
 
-        DrinkSpawner = GameObject.Find("DrinkSpawner");
+        try
+        {
+            DrinkSpawner = GameObject.Find("DrinkSpawner");
+        }
+        catch
+        {
+            Debug.Log(gameObject + " could not find DrinkSpawner");
+        }
+
+        try
+        {
+            anim = GameObject.Find("GlassPour").GetComponent<Animator>();
+        }
+        catch
+        {
+            Debug.Log(gameObject + " could not find Animator");
+        }
+
     }
 
     void Update()
@@ -37,6 +74,29 @@ public class DrinkScript : MonoBehaviour
         {
             Destroy(gameObject);
             DrinkSpawner.GetComponent<DrinkSpawner>().DrinkTaken();
+
+            anim.SetInteger("GetAnim",randomNumber);
+
+            anim.SetBool("DrinkDrank", true);
+            //StopAnim();
         }
+
+        if (anim.GetBool("DrinkDrank"))
+        {
+            StartCoroutine(DelayStop());
+        }
+
+    }
+
+    IEnumerator DelayStop()
+    {
+        yield return null;
+        StopAnim();
+    }
+
+    void StopAnim()
+    {
+        Debug.Log("stop anim");
+        anim.SetBool("DrinkDrank", false);
     }
 }
