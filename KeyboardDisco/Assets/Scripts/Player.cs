@@ -75,4 +75,9 @@ public class Player : MonoBehaviour
 
 		return 0;
 	}
+
+    public KeyScript GetKey()
+    {
+		return currentKey;
+    }
 }
