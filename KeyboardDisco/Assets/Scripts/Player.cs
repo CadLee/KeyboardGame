@@ -12,13 +12,15 @@ public class Player : MonoBehaviour
 	private Vector3 transitionOrigin;
 	private Vector3 transitionDestination;
 
+	public bool fixPos = true;
+
 	private enum Dir {Down = 0, Left = 1, Right = 2, Up = 3};
 
 	public void Setup(KeyboardScript keyboard)
 	{
 		currentKey = keyboard.GetKeyAtPos(startPos);
 		transform.position = currentKey.transform.position;
-	}
+    }
 
 	public void PressKey(KeyScript keyPressed)
 	{
@@ -45,6 +47,15 @@ public class Player : MonoBehaviour
 		{
 			animator.Animating = false;
 		}
+
+		if (fixPos)
+		{
+			gameObject.transform.position = currentKey.transform.position;
+			if (Input.anyKeyDown)
+			{
+                fixPos = false;
+            }
+        }
 	}
 
 	private void StartMovementTransition(Vector3 origin, Vector3 destination)
