@@ -12,6 +12,9 @@ public class DrinkScore : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public GameObject[] snitches;
+    public GameObject player;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -28,10 +31,28 @@ public class DrinkScore : MonoBehaviour
         {
             Invoke("WinGame", 1.3f);
         }
+
+        for(int i = 0; i < snitches.Length; i++)
+        {
+
+            if (snitches[i].GetComponent<Snitch>().GetKey() == player.GetComponent<Player>().GetKey())
+            {
+                Invoke("LoseGame", 1f);
+            }
+        }
     }
 
     public void ScoreUp()
     {
+        for (int i = 0; i < snitches.Length; i++)
+        {
+            if (snitches[0].GetComponent<Snitch>().GetKey() == player.GetComponent<Player>().GetKey())
+            {
+                SceneManager.LoadScene(4);
+                Debug.Log("Fail");
+            }
+        }
+
         currentScore++;
         Debug.Log("Drinks Drank: "+currentScore);
         try
@@ -59,5 +80,11 @@ public class DrinkScore : MonoBehaviour
     {
         SceneManager.LoadScene(3);
         Debug.Log("Victory");
+    }
+
+    private void LoseGame()
+    {
+        SceneManager.LoadScene(4);
+        Debug.Log("Fail");
     }
 }

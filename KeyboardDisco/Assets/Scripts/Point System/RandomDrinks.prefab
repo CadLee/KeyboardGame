@@ -101,6 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c900b06455ff174298d336e38c3a794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snitches:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   drinkSprites:
   - {fileID: -1038877984445942537, guid: ab05f1d5dcc3a9144a731f59c8c7043a, type: 3}
   - {fileID: 7788275967754772360, guid: 4d29b6c3e9923714aa9eb4dd5de4fd57, type: 3}

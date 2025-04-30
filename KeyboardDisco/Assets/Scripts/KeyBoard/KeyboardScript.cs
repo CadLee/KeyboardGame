@@ -1,7 +1,11 @@
 using UnityEngine;
 using TMPro;
 
+#pragma warning disable CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
+#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
 public struct KeyPos
+#pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
+#pragma warning restore CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
 {
 	public int x, y;
 
@@ -122,6 +126,13 @@ public struct KeyPos
 
 		return newPos;
 	}
+
+    public override bool Equals(object obj)
+    {
+        return obj is KeyPos pos &&
+               x == pos.x &&
+               y == pos.y;
+    }
 }
 
 public class KeyboardScript : MonoBehaviour

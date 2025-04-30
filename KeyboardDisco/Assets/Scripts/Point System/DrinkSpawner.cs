@@ -8,7 +8,6 @@ public class DrinkSpawner : MonoBehaviour
     public int drinkAmount;
 
     private int currentAmount = 0;
-    
 
     void Update()
     {

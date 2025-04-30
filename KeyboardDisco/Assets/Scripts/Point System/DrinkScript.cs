@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DrinkScript : MonoBehaviour
 {
@@ -65,7 +66,6 @@ public class DrinkScript : MonoBehaviour
         {
             Debug.Log(gameObject + " could not find Animator");
         }
-
     }
 
     void Update()
@@ -85,7 +85,6 @@ public class DrinkScript : MonoBehaviour
         {
             StartCoroutine(DelayStop());
         }
-
     }
 
     IEnumerator DelayStop()
