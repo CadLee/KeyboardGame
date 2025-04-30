@@ -6,8 +6,34 @@ public class KeyScript : MonoBehaviour
 {
 	public KeyCode Key;
 	public KeyPos Pos;
+	public Character character = null;
 
 	private bool _highlighted = false;
+
+	public bool IsDangerous(KeyboardScript keyboard)
+	{
+		Character c;
+		c = keyboard.GetKeyAtPos(Pos.Left()).character;
+		if (c != null && c.IsDangerous)
+			return true;
+		c = keyboard.GetKeyAtPos(Pos.Right()).character;
+		if (c != null && c.IsDangerous)
+			return true;
+		c = keyboard.GetKeyAtPos(Pos.UpLeft()).character;
+		if (c != null && c.IsDangerous)
+			return true;
+		c = keyboard.GetKeyAtPos(Pos.UpRight()).character;
+		if (c != null && c.IsDangerous)
+			return true;
+		c = keyboard.GetKeyAtPos(Pos.DownLeft()).character;
+		if (c != null && c.IsDangerous)
+			return true;
+		c = keyboard.GetKeyAtPos(Pos.DownRight()).character;
+		if (c != null && c.IsDangerous)
+			return true;
+
+		return false;
+	}
 
 	public bool IsHighlighted
 	{

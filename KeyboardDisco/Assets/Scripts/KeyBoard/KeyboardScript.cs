@@ -37,6 +37,16 @@ public struct KeyPos
 		return false;
 	}
 
+	public static bool operator ==(KeyPos a, KeyPos b)
+	{
+		return (a.x == b.x && a.y == b.y);
+	}
+
+	public static bool operator !=(KeyPos a, KeyPos b)
+	{
+		return (a.x != b.x || a.y != b.y);
+	}
+
 	public KeyPos Left(int count = 1)
 	{
 		int newX = x - count;
@@ -117,6 +127,7 @@ public struct KeyPos
 public class KeyboardScript : MonoBehaviour
 {
 	public Player player;
+	public Character[] characters;
 	
 	private KeyScript[][] keys;
 	private KeyCode[][] keycodes =
@@ -188,6 +199,8 @@ public class KeyboardScript : MonoBehaviour
 	{
 		FindKeys();
 		player.Setup(this);
+		for (int i = 0; i < characters.Length; i++)
+			characters[i].Setup(this);
 	}
 
 	private void FindKeys()
